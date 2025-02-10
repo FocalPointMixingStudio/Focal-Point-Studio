@@ -55,7 +55,7 @@
             databaseURL: "https://focalpointstudio-24732-default-rtdb.firebaseio.com/"
         };
         firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        const database = firebase.database().ref("FPS");
 
         function fetchDescription() {
             const name = document.getElementById("nameInput").value.toLowerCase();
