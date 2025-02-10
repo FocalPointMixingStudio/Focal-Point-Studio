@@ -50,7 +50,7 @@
     <p id="outputDescription"></p>
 
     <script>
-        // Tanto per risparmiarti tempo se sei chi penso tu sia ti dico già che nel database non ho salvato dati sensibili
+        // Configura Firebase con il tuo database
         const firebaseConfig = {
             databaseURL: "https://focalpointstudio-24732-default-rtdb.firebaseio.com/"
         };
@@ -63,8 +63,8 @@
             const name = document.getElementById("nameInput").value.toLowerCase();
             const password = document.getElementById("passwordInput").value;
 
-            // Cerca l'utente nel database Firebase
-            database.ref("users/" + name).once("value", (snapshot) => {
+            // Modifica il percorso per riflettere il nodo FPS
+            database.ref("FPS/users/" + name).once("value", (snapshot) => {
                 const userData = snapshot.val();
 
                 if (userData && userData.password === password) {
@@ -80,4 +80,5 @@
 
 </body>
 </html>
+
 
