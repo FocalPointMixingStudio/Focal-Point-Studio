@@ -55,13 +55,14 @@
             databaseURL: "https://focalpointstudio-24732-default-rtdb.firebaseio.com/"
         };
         firebase.initializeApp(firebaseConfig);
-        const database = firebase.database().ref("FPS");
+        const database = firebase.database().ref("FPS"); // Il nodo principale
 
         function fetchDescription() {
             const name = document.getElementById("nameInput").value.toLowerCase();
             const password = document.getElementById("passwordInput").value;
 
-            const userRef = database.ref("FPS/users/" + name);
+            // Recupero i dati dell'utente dal nodo "users"
+            const userRef = database.ref("users/" + name); // Nodo utente
             userRef.once("value", snapshot => {
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
