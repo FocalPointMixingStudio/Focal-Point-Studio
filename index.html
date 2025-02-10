@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal</title>
+    <style>
+        body {
+            background-color: black;
+            color: limegreen;
+            font-family: monospace;
+            text-align: center;
+            padding-top: 50px;
+        }
+        input {
+            background-color: black;
+            color: limegreen;
+            font-family: monospace;
+            border: 1px solid limegreen;
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            background-color: limegreen;
+            color: black;
+            font-family: monospace;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Client Portal</h1>
+    <p>Enter your name and password to view your details.</p>
+
+    <input type="text" id="nameInput" placeholder="Enter Name">
+    <input type="password" id="passwordInput" placeholder="Enter Password">
+    <button onclick="fetchDescription()">Submit</button>
+
+    <h2 id="outputName"></h2>
+    <p id="outputDescription"></p>
+
+    <script>
+        function fetchDescription() {
+            const name = document.getElementById("nameInput").value.toLowerCase();
+            const password = document.getElementById("passwordInput").value;
+
+            // Example data (replace with Firebase)
+            const users = {
+                "alice": { password: "1234", description: "Alice is an expert in mathematics." },
+                "bob": { password: "5678", description: "Bob is a skilled musician." },
+                "charlie": { password: "abcd", description: "Charlie loves coding and AI." }
+            };
+
+            if (users[name] && users[name].password === password) {
+                document.getElementById("outputName").innerText = "Welcome, " + name.charAt(0).toUpperCase() + name.slice(1);
+                document.getElementById("outputDescription").innerText = users[name].description;
+            } else {
+                document.getElementById("outputName").innerText = "Access Denied";
+                document.getElementById("outputDescription").innerText = "Invalid name or password.";
+            }
+        }
+    </script>
+
+</body>
+</html>
 
